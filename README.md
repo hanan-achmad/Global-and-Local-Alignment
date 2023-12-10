@@ -1,1 +1,15 @@
-# Global-and-Local-Alignment
+# Global and Local Sequence Alignment
+
+<h3>Algoritma Sequence alignment</h3>
+<p>1. Inisialisasi Matriks: Membuat matriks berdasarkan panjang sequence sebagai sumbu x dan y, serta memilih sistem skoring. Pada kasus ini, akan digunakan skoring: Match = +1, Mismatch = -1, dan Gap = -1.</p>
+<p>2. Pengisian Matriks: Mengisi matriks berdasarkan sistem skoring. Dimulai dari baris paling atas, setiap sel dalam matriks mendapatkan nilai dari sel-sel yang berdekatan di sebelah kiri, atas-kiri, atau di atas sel saat ini. Skor match ditambahkan atau gap/mismatch pinalti dikurangkan dari sel-sel yang berdekatan ini, dan nilai maksimum diisi ke sel tersebut.</p>
+<p>3. Backtracking: Setelah semua sel matriks terisi, dilakukan backtracking untuk menghitung optimal alignment. Langkah backtracking dimulai dari sel terakhir yang terisi dalam matriks (sel kanan bawah) hingga ke sel pertama yang terisi dalam matriks (sel sudut kiri atas matriks). Jalur backtracking ini dihitung dengan bergerak melalui sel-sel berdekatan (sel di sebelah kiri, atas-kiri, dan di atas sel) dengan skor maksimum, sehingga jalur memiliki total skor maksimum. Jika ada beberapa jalur, maka semua dianggap sebagai jalur optimal. Jalur bergerak diagonal ke kiri, jika terdapat kesesuaian atau jika skor maksimum dari sel-sel berdekatan ada di sel diagonal kiri. Jika salah satu dari ini benar, dua karakter yang sesuai dari setiap sequence diselaraskan bersama. Ketika skor maksimum diperoleh dengan bergerak secara horizontal, maka diperoleh gap dalam sequence pada sumbu vertikal, dan jika jalur bergerak secara vertikal, maka diperoleh gap dalam sequence pada sumbu horizontal.</p>
+
+<h3>Global Alignment (Needleman-Wunsch)</h3>
+<p>Algoritma Needleman-Wunsch bekerja dengan membandingkan panjang dua sequence secara keseluruhan. Dengan menggunakan matriks skor, di mana setiap sel dalam matriks mewakili skor maksimal untuk alingment pada titik tersebut. Dimulai dengan menginisialisasi matriks skor berdasarkan skor substitusi dan memberikan nilai-nilai awal. Selanjutnya, algoritma mengisi matriks dengan menghitung skor optimal untuk setiap sel berdasarkan skor sebelumnya. Setelah matriks terisi, backtracking dilakukan untuk mendapatkan alignment paling optimal.</p>
+<p>Pada kasus ini kita akan melakukan global alignment antara genome African Swine Fever Virus BA71V dengan Genome African Swine Fever Virus E75 untuk melihat skor kemiripan antar kedua spesies ini.</p>
+
+<h3>Local Alignment (Waterman-Smith)</h3>
+<p>Algoritma Waterman-Smith difokuskan untuk menemukan alignment terbaik di antara dua urutan secara lokal. Algoritma ini juga menggunakan matriks skor dengan fokus pada skor maksimum di dalam sub-matriks yang mencerminkan sequence lokal terbaik. Algoritma ini memulai dengan menginisialisasi matriks skor dan mengisi matriks dengan menghitung skor optimal untuk setiap sel. Namun, perbedaannya terletak pada cara mencari alignment secara lokal. Setelah matriks diisi, lokasi skor maksimum ditemukan, dan backtracking dilakukan untuk mendapatkan alignment lokal yang paling optimal.</p>
+<p>Pada kasus ini kita akan melakukan lokal alignment antara genome African Swine Fever Virus BA71V dengan Gene Dna Polymerase African Swine Fever Virus untuk melihat apakah gene tersebut terkait dengan genome yang dibandingkan.</p>
+
